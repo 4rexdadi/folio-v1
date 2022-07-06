@@ -1,0 +1,49 @@
+@use "../../style/globals/" as *;
+@use "../../style/util/" as *;
+
+.banner {
+	height: 100vh;
+	width: 100%;
+	position: relative;
+	background: var(--homepageColor);
+
+	&__video {
+		object-fit: cover;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		display: block;
+	}
+
+	&__canvas {
+		position: absolute;
+		width: 100%;
+		top: 0;
+		left: 0;
+		height: 100%;
+		display: block;
+	}
+
+	&__title {
+		position: absolute;
+		bottom: -143px;
+		left: 0;
+		pointer-events: none;
+		z-index: 300;
+
+		span {
+			display: block;
+			font-size: clamp(rem(66), 10vw, rem(125));
+			font-weight: 900;
+			line-height: 1.2;
+			font-family: $base-font;
+			text-transform: uppercase;
+			color: transparent;
+			font-weight: 500;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke: 2px var(--textColor);
+		}
+	}
+}

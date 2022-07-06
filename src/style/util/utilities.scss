@@ -1,0 +1,146 @@
+@use "sass:math";
+@use "../globals/variables" as *;
+@use "../globals/colors" as *;
+@use "../globals/fonts" as *;
+
+.flex {
+	display: flex;
+}
+
+.grid {
+	display: grid;
+}
+
+.block {
+	display: block;
+}
+
+.btn {
+	text-decoration: none;
+	cursor: pointer;
+	display: inline-block;
+	border: 0;
+}
+
+.card {
+	display: block;
+	padding: $base-padding;
+	border: 1px solid #ddd;
+	box-shadow: $base-box-shadow;
+	border-radius: 50px;
+
+	&__title {
+		font-size: $base-font-size;
+		padding-bottom: $base-padding;
+		font-weight: bold;
+	}
+	%__body {
+		font-size: $base-font-size;
+
+		a {
+			text-decoration: underline;
+		}
+	}
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap; /* added line */
+	border: 0;
+}
+.uppercase {
+	text-transform: uppercase;
+}
+
+// preloader
+.preloader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--primary);
+	transition: opacity 0.75s, visibility 0.75s;
+	z-index: 201;
+
+	&::after {
+		content: "";
+		width: 75px;
+		height: 75px;
+		border: 15px solid #dddddd;
+		border-top-color: var(--secondary);
+		border-radius: 50%;
+		animation: loading 0.75s ease infinite;
+	}
+}
+
+.preloader--hidden {
+	opacity: 0;
+	visibility: hidden;
+}
+
+.link {
+	overflow: hidden;
+	position: relative;
+	display: inline-block;
+	pointer-events: visible;
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		width: 100%;
+		left: 0;
+	}
+
+	&::before {
+		background-color: $secondary;
+		height: 2px;
+		bottom: 0;
+		transform-origin: 100% 50%;
+		transform: scaleX(0);
+		transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+	}
+
+	&::after {
+		content: attr(data-replace);
+		height: 100%;
+		top: 0;
+		transform-origin: 100% 50%;
+		transform: translate3d(200%, 0, 0);
+		transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+		color: $secondary;
+	}
+
+	&:hover::before {
+		transform-origin: 0% 50%;
+		transform: scaleX(1);
+	}
+
+	&:hover::after {
+		transform: translate3d(0, 0, 0);
+	}
+
+	span {
+		display: inline-block;
+		transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+	}
+
+	&:hover span {
+		transform: translate3d(-200%, 0, 0);
+	}
+}
+
+// @debug math.div(10, 3);
+// @debug math.$pi;
+// @debug math.floor(2.6);
+// @debug math.max(1px, 20px, 15px, 12px);

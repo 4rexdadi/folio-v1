@@ -1,0 +1,14 @@
+@use "../util/functions" as *;
+
+// spacing
+$base-padding: 0.75rem !default;
+$base-margin: 0.75rem !default;
+
+// box-shadow
+$base-box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1) !default;
+
+// font sizes
+$base-font-size: clamp(rem(18), 2vw, rem(25)) !default;
+$font-sm: 0.875rem; //14px
+$font-md: 1.125rem; //18px
+$font-lg: 2.5rem; //40px
